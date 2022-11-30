@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+.player {
+    display: flex;
+    flex-direction: column;
+}
+
+.player_body {
+    display: flex;
+    flex-grow: 1;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
