@@ -10,6 +10,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import searchSongReducer from "./redux/search-song-reducer";
 import {Provider} from "react-redux";
 import Register from "./components/login/register";
+import UserManagement from "./components/UserManagement";
 
 const code = new URLSearchParams(window.location.search).get("code")
 
@@ -30,6 +31,7 @@ function App() {
                     <Link to="/spotify-login">Spotify Login Page | </Link>
                     <Link to="/home">Home | </Link>
                     <Link to="/dashboard">Dashboard | </Link>
+                    <Link to="/user-management">User Management | </Link>
                     <div className="container">
                         <Routes>
                             <Route path="/"
@@ -46,6 +48,7 @@ function App() {
                             <Route path="/dashboard"
                                    element={<Dashboard code={code}/>}/>
                             <Route path="/register" element={<Register/>}/>
+                            <Route path="/user-management" element={<UserManagement/>}/>
                         </Routes>
                     </div>
                 </BrowserRouter>
