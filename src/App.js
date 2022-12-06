@@ -9,6 +9,7 @@ import Dashboard from "./components/Dashboard";
 import {configureStore} from "@reduxjs/toolkit";
 import searchSongReducer from "./redux/search-song-reducer";
 import {Provider} from "react-redux";
+import Register from "./components/login/register";
 
 const code = new URLSearchParams(window.location.search).get("code")
 
@@ -44,6 +45,7 @@ function App() {
                             <Route path="/details" element={<Details/>}/>
                             <Route path="/dashboard"
                                    element={<Dashboard code={code}/>}/>
+                            <Route path="/register" element={<Register/>}/>
                         </Routes>
                     </div>
                 </BrowserRouter>
