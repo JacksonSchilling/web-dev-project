@@ -1,7 +1,7 @@
 import React from "react";
 
 const AUTH_URL = "https://accounts.spotify.com/authorize?"
-                 + "client_id=58728a8a34d247108165ffda29b86634"
+                 + "client_id=bb235ac85acd4799bac266127f244d7f"
                  + "&response_type=code"
                  + "&redirect_uri=http://localhost:3000"
                  + "&scope=streaming%20user-read-email%20user-read-private%20"

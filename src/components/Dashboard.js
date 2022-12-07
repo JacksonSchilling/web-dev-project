@@ -9,7 +9,7 @@ import {useDispatch} from "react-redux";
 import {likeSongThunk} from "../services/songs-thunk";
 
 const spotifyApi = new SpotifyWebApi({
-                                         clientId: "58728a8a34d247108165ffda29b86634",
+                                         clientId: "bb235ac85acd4799bac266127f244d7f",
                                      })
 
 export default function Dashboard({code}) {
