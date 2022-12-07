@@ -11,6 +11,8 @@ import searchSongReducer from "./redux/search-song-reducer";
 import {Provider} from "react-redux";
 import Register from "./components/login/register";
 import UserManagement from "./components/UserManagement";
+import Starter from "./components/liked/Starter";
+import "./App.css";
 
 const code = new URLSearchParams(window.location.search).get("code")
 
@@ -23,16 +25,20 @@ const store = configureStore({
 function App() {
     return (
         <Provider store={store}>
-            <div className="App">
+
                 <BrowserRouter>
-                    <Link to="/profile">Profile Page | </Link>
-                    <Link to="/login">Login Page | </Link>
-                    <Link to="/details">Details Page | </Link>
-                    <Link to="/spotify-login">Spotify Login Page | </Link>
-                    <Link to="/home">Home | </Link>
-                    <Link to="/dashboard">Dashboard | </Link>
-                    <Link to="/user-management">User Management | </Link>
-                    <div className="container">
+                    <div className = "wrapper">
+                    <div className="sidebar sidebarOption a">
+                    <Link to="/profile">Profile Page </Link>
+                    <Link to="/login">Login Page </Link>
+                    <Link to="/details">Details Page </Link>
+                    <Link to="/spotify-login">Spotify Login Page  </Link>
+                    <Link to="/home">Home </Link>
+                    <Link to="/dashboard">Dashboard </Link>
+                    <Link to="/user-management">User Management  </Link>
+                    <Link to="/liked">Liked Page</Link>
+                    </div>
+                    <div className="main_body player player_body">
                         <Routes>
                             <Route path="/"
                                    element={code ? <Dashboard code={code}/> :
@@ -49,10 +55,13 @@ function App() {
                                    element={<Dashboard code={code}/>}/>
                             <Route path="/register" element={<Register/>}/>
                             <Route path="/user-management" element={<UserManagement/>}/>
+
+                            <Route path="/liked"
+                                   element={<Starter/>}/>
                         </Routes>
                     </div>
+                    </div>
                 </BrowserRouter>
-            </div>
         </Provider>
 
     );

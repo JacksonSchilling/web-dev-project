@@ -31,6 +31,8 @@
 .player {
     display: flex;
     flex-direction: column;
+    overflow:hidden;
+    float:left;
 }
 
 .player_body {

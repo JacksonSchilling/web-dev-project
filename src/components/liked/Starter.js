@@ -10,14 +10,12 @@ function Starter() {
             <div className="player">
                 <div className="player_body">
 
-                    <Sidebar/>
+                    {/*<Sidebar/>*/}
                     <Body/>
-                </div>
             </div>
-
+                </div>
         </div>
 
     );
-    console.log('Hellooo we are all here');
 }
 export default Starter;
