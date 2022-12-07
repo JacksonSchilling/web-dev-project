@@ -1,0 +1,20 @@
+.list-group-item .black-list-group-item{
+    background-color: black;
+    color: black;
+}
+
+.fg-white{
+    color: white;
+}
+
+.fg-grey{
+    color: grey;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
