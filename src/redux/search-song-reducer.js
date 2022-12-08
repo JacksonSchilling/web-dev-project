@@ -14,7 +14,7 @@ const likedSongSlice = createSlice({
                                            [likeSongThunk.pending]:
                                                (state) => {
                                                    state.loading = true
-                                                   state.tuits = []
+                                                   state.songs = []
                                                },
                                            [likeSongThunk.fulfilled]:
                                                (state, action) => {
@@ -25,6 +25,11 @@ const likedSongSlice = createSlice({
                                            [likeSongThunk.rejected]:
                                                (state) => {
                                                    state.loading = false
+                                               },
+                                           [getLikedSongsThunk.fulfilled]:
+                                               (state, {payload}) => {
+                                                   state.loading = false
+                                                   state.songs = payload
                                                },
                                        },
 

@@ -6,6 +6,7 @@ const SONGS_API = 'http://localhost:4000/api/like'
 export const getLiked = async () => {
     const response = await axios.get(SONGS_API);
     const tracks = response.data;
+    // console.log(tracks)
     return tracks;
 }
 

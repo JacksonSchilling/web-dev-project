@@ -3,7 +3,11 @@ import * as service from './liked-song-service'
 
 export const getLikedSongsThunk = createAsyncThunk(
     'songs/getLiked',
-    async () => await service.getLiked());
+    async () => {  const songs = await service.getLiked()
+        console.log(songs)
+        return songs
+    }
+);
 
 
 

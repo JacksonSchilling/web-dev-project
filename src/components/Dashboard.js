@@ -8,8 +8,9 @@ import axios from "axios"
 import {useDispatch} from "react-redux";
 import {likeSongThunk} from "../services/songs-thunk";
 
-const spotifyApi = new SpotifyWebApi({
-                                         clientId: "bb235ac85acd4799bac266127f244d7f",
+
+export const spotifyApi = new SpotifyWebApi({
+                                         clientId: "58728a8a34d247108165ffda29b86634",
                                      })
 
 export default function Dashboard({code}) {
@@ -38,9 +39,9 @@ export default function Dashboard({code}) {
             }, function (err) {
                 console.error(err);
             });
-
-
     }
+
+
 
     useEffect(() => {
         if (!playingTrack) {
