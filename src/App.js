@@ -11,7 +11,6 @@ import searchSongReducer from "./redux/search-song-reducer";
 import {Provider} from "react-redux";
 import Register from "./components/login/register";
 import UserManagement from "./components/UserManagement";
-import Starter from "./components/liked/Starter";
 import "./App.css";
 import LikedSong from "./components/likedSong";
 
@@ -38,17 +37,9 @@ function App() {
                         <Link to="/home">Home </Link>
                         <Link to="/dashboard">Dashboard </Link>
                         <Link to="/user-management">User Management </Link>
-                        <Link to="/liked">Liked Page</Link>
+                        <Link to="/liked-song">Liked Page</Link>
                     </div>
                     <div className="main_body player player_body">
-
-                        <Link to="/profile">Profile Page | </Link>
-                        <Link to="/login">Login Page | </Link>
-                        <Link to="/details">Details Page | </Link>
-                        <Link to="/spotify-login">Spotify Login Page | </Link>
-                        <Link to="/home">Home | </Link>
-                        <Link to="/dashboard">Dashboard | </Link>
-                        <Link to="/liked-song">Liked Songs</Link>
                         <div className="container">
                             <Routes>
                                 <Route path="/"
@@ -68,9 +59,6 @@ function App() {
                                 <Route path="/register" element={<Register/>}/>
                                 <Route path="/user-management"
                                        element={<UserManagement/>}/>
-
-                                <Route path="/liked"
-                                       element={<Starter/>}/>
                                 <Route path="/liked-song"
                                        element={<LikedSong/>}/>
                             </Routes>
