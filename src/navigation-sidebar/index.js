@@ -15,7 +15,7 @@ const NavigationSidebar = () => {
     const paths = pathname.split('/')
     const active = paths[2];
     return (
-        <div className="list-group col-3">
+        <div className="list-group">
 
             <Link to="/home" className={`list-group-item-dark  list-group-item ${active === 'home'?'active':''}`}>
                 <FontAwesomeIcon icon={(faHome)} className='me-1 text-white' />

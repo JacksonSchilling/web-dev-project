@@ -3,6 +3,7 @@ import "./home.css";
 
 const HomeComponent = () => {
     return(
+
         <div className="col-9 bg-black">
             <button className="btn btn-primary rounded-pill float-right">
                 <b>User1</b>

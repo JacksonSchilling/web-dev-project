@@ -20,6 +20,19 @@
 }
 
 .nudge-up-button{
-    bottom: 10px;
+    bottom: 50px;
+}
+
+.btn-primary.override-bs{
+    bottom: 50px;
+    color: white;
+    position: relative;
+    width: 150px;
+    background-color: black;
+    border-color: black;
+}
+
+.move-album-up{
+    bottom: 20px;
 }
 
