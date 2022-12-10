@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router";
 
-const Details = () => {
+const Details = ({albumObj}) => {
     const navigate = useNavigate()
     return (
         <div className="container">
