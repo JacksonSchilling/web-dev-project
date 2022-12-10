@@ -11,14 +11,17 @@ import searchSongReducer from "./redux/search-song-reducer";
 import {Provider} from "react-redux";
 import Register from "./components/login/register";
 import UserManagement from "./components/UserManagement";
+import Starter from "./components/liked/Starter";
 import "./App.css";
 import LikedSong from "./components/likedSong";
+import usersReducer from "./components/login/users-reducer";
 
 const code = new URLSearchParams(window.location.search).get("code")
 
 const store = configureStore({
                                  reducer: {
                                      likedSong: searchSongReducer,
+                                     users: usersReducer
                                  }
                              })
 
