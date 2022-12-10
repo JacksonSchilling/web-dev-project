@@ -3,7 +3,6 @@ import EditProfile from "./components/profile/EditProfile";
 import Login from "./components/login";
 import Home from "./components/home";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
-import Details from "./components/album_details";
 import SpotifyLogin from "./components/login/SpotifyLogin";
 import Dashboard from "./components/Dashboard";
 import {configureStore} from "@reduxjs/toolkit";
@@ -34,7 +33,6 @@ function App() {
                     <div className="sidebar sidebarOption a">
                         <Link to="/profile">Profile Page </Link>
                         <Link to="/login">Login Page </Link>
-                        <Link to="/details">Details Page </Link>
                         <Link to="/spotify-login">Spotify Login Page </Link>
                         <Link to="/home">Home </Link>
                         <Link to="/dashboard">Dashboard </Link>
@@ -55,7 +53,6 @@ function App() {
                                 <Route path="/login" element={<Login/>}/>
                                 <Route path="/spotify-login"
                                        element={<SpotifyLogin/>}/>
-                                <Route path="/details" element={<Details/>}/>
                                 <Route path="/dashboard"
                                        element={<Dashboard code={code}/>}/>
                                 <Route path="/register" element={<Register/>}/>

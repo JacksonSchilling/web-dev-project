@@ -121,9 +121,7 @@ const LikedSong = () => {
                                                         <span>{track.duration}</span>
                                                     </div>
                                                     <div className="col 1">
-                                                        <i className="fa fa-play"></i>
-                                                        <i className="fa fa-pause"></i>
-                                                        <i className="fa fa-heart"></i>
+                                                        <i className="bi bi-play-circle"></i>
                                                     </div>
                                                 </div>
 
