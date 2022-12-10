@@ -1,48 +1,57 @@
-import React from "react";
+import React, {useState} from "react";
 import "./login.css"
 import {useNavigate} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {registerThunk} from "./users-thunks";
 
 const Register = () => {
+    const [username, setUsername] = useState('dan')
+    const [password, setPassword] = useState('dan123')
+    const [validatePassword, setValidatePassword] = useState('dan123')
+    const [error, setError] = useState(null)
+    const {currentUser} = useSelector((state) => state.users)
     const navigate = useNavigate()
-    return (
-        <div className="form-signin w-100 m-auto">
-            <button type="button"
-                    className="btn btn-sm btn-outline-secondary mt-2 me-5 float-end rounded-pill"
-                    onClick={() => navigate('/login')}
-            >
-                Already have an account? Log-In
+    const dispatch = useDispatch()
+    const handleRegisterBtn = () => {
+        if (password !== validatePassword) {
+            setError('Passwords must match')
+            return
+        }
+        setError(null)
+        const newUser = {username, password}
+        dispatch(registerThunk(newUser))
+    }
+    return(
+        <>
+            <h1>Register</h1>
+            {
+                error &&
+                <div className="alert alert-danger">
+                    {error}
+                </div>
+            }
+            <input
+                className="form-control mb-2"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}/>
+            <input
+                className="form-control mb-2"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}/>
+            <input
+                className="form-control mb-2"
+                value={validatePassword}
+                onChange={(e) => setValidatePassword(e.target.value)}/>
+            <button
+                onClick={handleRegisterBtn}
+                className="btn btn-primary w-100">
+                Register
             </button>
-            <form>
-                <h1 className="h3 mb-3 fw-normal">Register for an account</h1>
-
-                <div className="form-floating">
-                    <input type="email" className="form-control"
-                           id="floatingInput"
-                           placeholder="name@example.com"/>
-                    <label htmlFor="floatingInput">Email address</label>
-                </div>
-                <div className="form-floating">
-                    <input type="password" className="form-control"
-                           id="floatingPassword" placeholder="Password"/>
-                    <label htmlFor="floatingPassword">Password</label>
-                </div>
-
-                <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked"/>
-                        <label className="form-check-label" htmlFor="flexCheckChecked">
-                            Admin Account
-                        </label>
-                </div>
-
-                <button className="w-100 btn btn-lg btn-primary"
-                        type="submit">Register
-                </button>
-                <p className="mt-5 mb-3 text-muted position-absolute top-25
-                start-50 translate-middle">&copy; 2017–2022</p>
-            </form>
-
-
-        </div>
+            {
+                currentUser &&
+                <h2>Welcome {currentUser.username}</h2>
+            }
+        </>
     )
 }
 
