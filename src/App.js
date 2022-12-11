@@ -31,13 +31,13 @@ function App() {
 
                 <div className="wrapper">
                     <div className="sidebar sidebarOption a">
-                        <Link to="/profile">Profile Page </Link>
-                        <Link to="/login">Login Page </Link>
-                        <Link to="/spotify-login">Spotify Login Page </Link>
-                        <Link to="/home">Home </Link>
+                        <Link to="/api/profile">Profile Page </Link>
+                        <Link to="/api/login">Login Page </Link>
+                        <Link to="/login">Spotify Login Page </Link>
+                        <Link to="/api/home">Home </Link>
                         <Link to="/dashboard">Dashboard </Link>
-                        <Link to="/user-management">User Management </Link>
-                        <Link to="/liked-song">Liked Page</Link>
+                        <Link to="/api/user-management">User Management </Link>
+                        <Link to="/api/liked-song">Liked Page</Link>
                     </div>
                     <div className="main_body player player_body">
                         <div className="container">
@@ -46,19 +46,19 @@ function App() {
                                        element={code ? <Dashboard code={code}/>
                                                      :
                                                 <SpotifyLogin/>}/>
-                                <Route path="/home" element={<Home/>}/>
-                                <Route path="/profile" element={<Profile/>}/>
-                                <Route path="/edit-profile"
+                                <Route path="/api/home" element={<Home/>}/>
+                                <Route path="/api/profile" element={<Profile/>}/>
+                                <Route path="/api/edit-profile"
                                        element={<EditProfile/>}/>
-                                <Route path="/login" element={<Login/>}/>
-                                <Route path="/spotify-login"
+                                <Route path="/api/login" element={<Login/>}/>
+                                <Route path="/login"
                                        element={<SpotifyLogin/>}/>
                                 <Route path="/dashboard"
                                        element={<Dashboard code={code}/>}/>
-                                <Route path="/register" element={<Register/>}/>
-                                <Route path="/user-management"
+                                <Route path="/api/register" element={<Register/>}/>
+                                <Route path="/api/user-management"
                                        element={<UserManagement/>}/>
-                                <Route path="/liked-song"
+                                <Route path="/api/liked-song"
                                        element={<LikedSong/>}/>
                             </Routes>
                         </div>

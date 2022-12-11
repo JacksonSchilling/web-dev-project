@@ -27,7 +27,8 @@ const Login = () => {
     }
 
     if (currentUser) {
-        return (<Navigate to={'/profile'}/>)
+        console.log(currentUser)
+        return (<Navigate to={'/api/profile'}/>)
     }
 
     return (

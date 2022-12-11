@@ -65,7 +65,7 @@ const LikedSong = () => {
     const handleCloseDetails = () => {
         setAlbum([])
         setClicked(false)
-        navigate('/liked-song')
+        navigate('/api/liked-song')
         // window.location.reload()
     }
 
@@ -74,7 +74,7 @@ const LikedSong = () => {
             {!clicked && (
                 <div className="row">
                     <div className="col-md-4 px-0">
-                        <img src="images/liked-song-logo.png" alt="liked logo"
+                        <img src="/images/liked-song-logo.png" alt="liked logo"
                              className="img-fluid "/>
                     </div>
                     <div className="col">
