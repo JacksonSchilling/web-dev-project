@@ -22,7 +22,7 @@ const Profile = () => {
                          className="img-fluid rounded-circle w-25 wd-overlap-profile-img"/>
                     <button type="button"
                             className="btn btn-sm btn-outline-secondary mt-2 float-end rounded-pill"
-                            onClick={() => navigate('/edit-profile')}
+                            onClick={() => navigate('/api/edit-profile')}
                     >
                         Edit
                         Profile

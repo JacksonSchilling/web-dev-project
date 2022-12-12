@@ -10,6 +10,8 @@ const LikedSong = () => {
     const {songs, loading} = useSelector(
         state => state.likedSong)
 
+    const {currentUser} = useSelector((state) => state.users)
+
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
@@ -18,13 +20,8 @@ const LikedSong = () => {
     const [clicked, setClicked] = useState(false)
 
     useEffect(() => {
-        dispatch(getLikedSongsThunk())
+        dispatch(getLikedSongsThunk(currentUser))
     }, [])
-
-    // const getImg = async (uri) => {
-    //     const res = await
-    // axios.get(`https://open.spotify.com/oembed?url=${uri}`) const img =
-    // res.data.thumbnail_url console.log(img) return img }
 
     const viewDetailsOfTrack = (track) => {
         const albumId = track.albumId

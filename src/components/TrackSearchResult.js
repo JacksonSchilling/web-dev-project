@@ -17,7 +17,7 @@ export default function TrackSearchResult({track, chooseTrack, likeSong}) {
     const handleLike = () => {
         setTrackLike(!trackLike)
         track.liked = trackLike
-        console.log(trackLike)
+        // console.log(trackLike)
         likeSong(track)
     }
 

@@ -3,6 +3,9 @@ import "./login.css"
 import {Navigate, useNavigate} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {loginThunk} from "./users-thunks";
+import axios from "axios";
+
+
 
 const Login = () => {
     const {currentUser} = useSelector((state) => state.users)
@@ -26,8 +29,8 @@ const Login = () => {
         }
     }
 
+
     if (currentUser) {
-        console.log(currentUser)
         return (<Navigate to={'/api/profile'}/>)
     }
 
