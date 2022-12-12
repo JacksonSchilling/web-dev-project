@@ -1,0 +1,9 @@
+.wd-inline-block {
+    display: inline-block;
+}
+
+.wd-overlap-profile-img {
+    position: relative;
+    bottom: 25px;
+    left: 20px;
+}
