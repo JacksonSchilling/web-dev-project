@@ -38,7 +38,7 @@ const Login = () => {
         <div className="form-signin w-100 m-auto">
             <button type="button"
                     className="btn btn-sm btn-outline-secondary mt-2 float-end rounded-pill"
-                    onClick={() => navigate('/register')}
+                    onClick={() => navigate('/api/register')}
             >
                 Register
             </button>
@@ -46,7 +46,7 @@ const Login = () => {
             <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div className="form-floating">
-                <input type="email" className="form-control"
+                <input type="" className="form-control"
                        id="floatingInput"
                        placeholder="name@example.com"
                        onChange={(e) => setUsername(e.target.value)}/>

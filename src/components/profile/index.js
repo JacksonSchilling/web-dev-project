@@ -1,8 +1,11 @@
 import React from "react";
 import "./index.css";
 import {useNavigate} from "react-router";
+import {useSelector} from "react-redux";
 
 const Profile = () => {
+    const {currentUser} = useSelector((state) => state.users)
+
     const navigate = useNavigate()
     return (
         <div className="container">
@@ -31,8 +34,8 @@ const Profile = () => {
 
             </div>
             <div className="row">
-                <p className="h4 fw-bolder m-0">Saurabh Gade</p>
-                <p className="h6 text-secondary">@saurabh7998</p>
+                <p className="h4 fw-bolder m-0">{currentUser.fullName}</p>
+                <p className="h6 text-secondary">@{currentUser.username}</p>
             </div>
             <div className="row mt-3">
                 <p></p>
@@ -43,15 +46,7 @@ const Profile = () => {
                         <h5>Email</h5>
                     </div>
                     <div className="col">
-                        <h5>gade.sau@xyz.com</h5>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <h5>Address</h5>
-                    </div>
-                    <div className="col">
-                        <h5>1211 Avenue of the Americas, New York, NY</h5>
+                        <h5>{currentUser.email}</h5>
                     </div>
                 </div>
                 <div className="row">
@@ -59,7 +54,7 @@ const Profile = () => {
                         <h5>Date of Birth</h5>
                     </div>
                     <div className="col">
-                        <h5>07 September, 1998</h5>
+                        <h5>{currentUser.dob}</h5>
                     </div>
                 </div>
             </div>
