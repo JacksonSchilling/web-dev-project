@@ -16,3 +16,14 @@ export const likeSongThunk = createAsyncThunk(
         return serverTuit
     });
 
+export const dislikeSongThunk = createAsyncThunk(
+    'songs/dislikeSong',
+    async (user,id) => {
+        console.log("reached thunk level - dislike Song")
+
+        console.log("The id that thunk recieved is " + id)
+
+        console.log("The user that thunk recieved is " + user)
+        const serverTuit = await service.dislikeSong(user,id)
+        return serverTuit
+    });

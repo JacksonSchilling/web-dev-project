@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {likeSongThunk, getLikedSongsThunk} from "../services/songs-thunk";
+import {likeSongThunk, getLikedSongsThunk,dislikeSongThunk} from "../services/songs-thunk";
 
 
 const initialState = {
@@ -31,8 +31,19 @@ const likedSongSlice = createSlice({
                                                    state.loading = false
                                                    state.songs = payload
                                                },
-                                       },
-
-                                   })
-
+                                           //     [dislikeSongThunk.fulfilled]:
+                                           //         (state, { payload }) => {
+                                           //             state.loading = false
+                                           //             state.songs = state.songs.filter(t => t.trackId !== payload)
+                                           //         }
+                                           // },
+                                           // reducers: {
+                                           //     dislikeSong(state, action) {
+                                           //         const index = state.findIndex(song => song.trackId === action.payload);
+                                           //         state.splice(index, 1);
+                                           //     }
+                                           // }
+                                       }
+                                   });
+//export const {dislikeSong} = likedSongSlice.actions;
 export default likedSongSlice.reducer

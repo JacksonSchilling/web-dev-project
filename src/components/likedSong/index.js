@@ -5,6 +5,7 @@ import TrackSearchResult from "../TrackSearchResult";
 import {spotifyApi} from "../Dashboard";
 import {useNavigate} from "react-router";
 import axios from "axios";
+import {likeSong} from "../../services/liked-song-service";
 
 const LikedSong = () => {
     const {songs, loading} = useSelector(
@@ -120,6 +121,7 @@ const LikedSong = () => {
                                                     <div className="col 1">
                                                         <i className="bi bi-play-circle"></i>
                                                     </div>
+
                                                 </div>
 
                                             )) : songs.map(track => (
@@ -142,17 +144,18 @@ const LikedSong = () => {
                      album !== [] ? album.map((track) => (
                         <div className="row">
 
-
                         </div>
                     )) : songs.map(track => (
                         <TrackSearchResult
                             track={track}
                             key={track.uri}
                             chooseTrack={null}
-                            likeSong={null}
+                            likeSong={likeSong}
                             chooseTrack={viewDetailsOfTrack}
                         />
+
                     ))}
+
                 </div>
 
 
