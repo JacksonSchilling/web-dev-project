@@ -13,7 +13,6 @@ const LikedSong = () => {
         state => state.likedSong)
 
     const {currentUser} = useSelector((state) => state.users)
-
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
@@ -22,8 +21,8 @@ const LikedSong = () => {
     const [clicked, setClicked] = useState(false)
 
     useEffect(() => {
-        dispatch(getLikedSongsThunk(currentUser))
-    }, [])
+        dispatch(getLikedSongsThunk(currentUser)) //eslint-disable-line react-hooks/exhaustive-deps
+    }, [songs])
 
     const dislikeSongCall = (track) => {
         const uri = track.uri
@@ -37,15 +36,13 @@ const LikedSong = () => {
                 }
                 console.log('Track information for dislike method', data.body);
                 //console.log("We are doing the initial sending the id of ", id);
-                const data1 =[currentUser, id]
-                const{user2,id2} = data1;
-                console.log('The sent user is ', user2);
-                console.log("The sent id is ", id2);
-
-
-
+                const data1 = [currentUser, id]
 
                 dispatch(dislikeSongThunk(data1))
+
+                //LikedSong()
+
+
             }, function (err) {
                 console.error(err);
             });
