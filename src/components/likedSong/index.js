@@ -7,6 +7,7 @@ import {useNavigate} from "react-router";
 import axios from "axios";
 import {dislikeSong, likeSong} from "../../services/liked-song-service";
 import TrackLikedSong from "../TrackLikedSong";
+import './home.css';
 
 const LikedSong = () => {
     const {songs, loading} = useSelector(
@@ -21,7 +22,8 @@ const LikedSong = () => {
     const [clicked, setClicked] = useState(false)
 
     useEffect(() => {
-        dispatch(getLikedSongsThunk(currentUser)) //eslint-disable-line react-hooks/exhaustive-deps
+        dispatch(getLikedSongsThunk(currentUser)) //eslint-disable-line
+                                                  // react-hooks/exhaustive-deps
     }, [songs])
 
     const dislikeSongCall = (track) => {
@@ -35,13 +37,13 @@ const LikedSong = () => {
                     user: currentUser
                 }
                 console.log('Track information for dislike method', data.body);
-                //console.log("We are doing the initial sending the id of ", id);
+                //console.log("We are doing the initial sending the id of ",
+                // id);
                 const data1 = [currentUser, id]
 
                 dispatch(dislikeSongThunk(data1))
 
                 //LikedSong()
-
 
             }, function (err) {
                 console.error(err);
@@ -73,7 +75,10 @@ const LikedSong = () => {
                                          'trackId': trackId,
                                          'numOfSongsInAlbum': numOfSongs,
                                          'albumImg': albumImgUrl,
-                                         'duration': minutes + ":" + (seconds < 10 ? '0' : '') + seconds,
+                                         'duration': minutes + ":" + (seconds
+                                                                      < 10 ? '0'
+                                                                           : '')
+                                                     + seconds,
                                      })
                     console.log(type + " " + artistName + " " + songTitle + " ")
                     setAlbum(albumTracks)
@@ -93,6 +98,7 @@ const LikedSong = () => {
     }
 
     return (
+        currentUser !== null ?
         <div className="container">
             {!clicked && (
                 <div className="row">
@@ -188,6 +194,75 @@ const LikedSong = () => {
             </div>
 
 
+        </div> :
+        <div>
+            <div className="mt-3 float-left move-left">
+                <h3>Popular songs</h3>
+                <div>
+                    <img width={170} alt={''} src="../images/sos-album.jpeg"/>
+                </div>
+
+                <div className="text-white fw-bold mt-2">
+                    Nobody Gets Me
+                </div>
+
+                <div className="fg-grey mt-2">
+                    SZA
+                </div>
+            </div>
+
+            <div className="mt-5 float-left position-relative ms-5 move-album-down">
+                <div>
+                    <img width={170} alt={''} src="../images/midnights-album.jpg"/>
+                </div>
+
+                <div className="text-white fw-bold mt-2">
+                    Anti-Hero
+                </div>
+
+                <div className="fg-grey mt-2">
+                    Taylor Swift
+                </div>
+            </div>
+            <div className="mt-5 float-left position-relative ms-5 move-album-down">
+                <div>
+                    <img width={170} alt={''} src="../images/unholy-album.png"/>
+                </div>
+
+                <div className="text-white fw-bold mt-2">
+                    Unholy (feat. Kim Petras)
+                </div>
+
+                <div className="fg-grey mt-2">
+                    Sam Smith, Kim Petras
+                </div>
+            </div>
+            <div className="mt-5 float-left position-relative ms-3 move-album-down">
+                <div>
+                    <img width={170} alt={''} src="../images/cuff-it-album.png"/>
+                </div>
+
+                <div className="text-white fw-bold mt-2">
+                    CUFF IT
+                </div>
+
+                <div className="fg-grey mt-2">
+                    Beyoncé
+                </div>
+            </div>
+            <div className="float-end position-relative ms-5 mt-4 move-album-up move-album-right">
+                <div>
+                    <img width={170} alt={''} src="../images/creepin-album.jpg"/>
+                </div>
+
+                <div className="text-white fw-bold mt-2">
+                    Creepin'
+                </div>
+
+                <div className="fg-grey mt-2">
+                    Metro Boomin
+                </div>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,50 @@
+
+.list-group-item .black-list-group-item{
+    background-color: black;
+    color: black;
+}
+
+.fg-white{
+    color: white;
+}
+
+.fg-grey{
+    color: grey;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
+
+.nudge-up-button{
+    bottom: 50px;
+}
+
+.btn-primary.override-bs{
+    bottom: 50px;
+    color: white;
+    position: relative;
+    width: 150px;
+    background-color: black;
+    border-color: black;
+}
+
+.move-album-up{
+    bottom: 250px;
+}
+
+.move-left{
+    margin-left: -100px;
+}
+
+.move-album-down{
+    top: 10px;
+}
+
+.move-album-right{
+    margin-left: 20px;
+}

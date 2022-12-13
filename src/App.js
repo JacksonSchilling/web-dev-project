@@ -33,11 +33,11 @@ function App() {
                         <div className="sidebar sidebarOption a">
                             <Link to="/api/profile">Profile Page </Link>
                             <Link to="/api/login">Login Page </Link>
-                            <Link to="/api/home">Home </Link>
+
                             <Link to="/dashboard">Dashboard </Link>
                             <Link to="/api/user-management">User
                                 Management </Link>
-                            <Link to="/api/liked-song">Liked Page</Link>
+                            <Link to="/api/home">Home</Link>
                             <Link to="/api/browse-users">Browse Users</Link>
                         </div>
                         <div className="main_body player player_body">
@@ -45,7 +45,7 @@ function App() {
                                 <Routes>
                                     <Route path="/"
                                            element={<Login/>}/>
-                                    <Route path="/api/home" element={<Home/>}/>
+
                                     <Route path="/api/profile"
                                            element={<Profile/>}/>
                                     <Route path="/api/edit-profile"
@@ -58,7 +58,7 @@ function App() {
                                            element={<Register/>}/>
                                     <Route path="/api/user-management"
                                            element={<UserManagement/>}/>
-                                    <Route path="/api/liked-song"
+                                    <Route path="/api/home"
                                            element={<LikedSong/>}/>
                                     <Route path="/api/browse-users"
                                            element={<UsersList/>}/>
