@@ -6,12 +6,14 @@ import "./usermanagement.css"
 
 const UserManagement = () => {
     const {users} = useSelector((state) => state.users)
-    const {currentUser} = useSelector((state) => state.currentUser)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(findAllUsersThunk())
     }, [])
-    if (currentUser.admin === true) {
+    const {currentUser} = useSelector((state) => state.users)
+
+    console.log(currentUser.fullName)
+    if (currentUser.admin !== null && currentUser.admin === true) {
         return(
             <>
                 {
