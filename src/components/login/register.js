@@ -13,6 +13,7 @@ const Register = () => {
     const [validatePassword, setValidatePassword] = useState('')
     const [error, setError] = useState(null)
     const {currentUser} = useSelector((state) => state.users)
+    const {admin, setAdmin} = useSelector((state) => state.users)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const handleRegisterBtn = () => {
@@ -21,7 +22,7 @@ const Register = () => {
             return
         }
         setError(null)
-        const newUser = {fullName, username, password, email, dob}
+        const newUser = {fullName, username, password, email, dob, admin}
         dispatch(registerThunk(newUser))
     }
     return(
@@ -99,6 +100,12 @@ const Register = () => {
                 id="confirm-password"
                 onChange={(e) => setValidatePassword(e.target.value)}/>
 
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={(e) => setAdmin(e.target.checked)}/>
+                <label className="form-check-label" form="flexCheckDefault">
+                    Admin Account?
+                </label>
+            </div>
 
             <button
                 onClick={handleRegisterBtn}
