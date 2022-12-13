@@ -8,7 +8,7 @@ const UserManagement = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(findAllUsersThunk())
-    }, [])
+    }, [users])
     return(
         <>
             {
@@ -21,7 +21,7 @@ const UserManagement = () => {
                         <li className="list-group-item"
                             key={user.id}>
                             <i onClick={() => {
-                                dispatch(deleteUserThunk(user.id))
+                                dispatch(deleteUserThunk(user._id))
                             }}
                                className="bi bi-trash float-end"></i>
                             <span>{user.username} </span>

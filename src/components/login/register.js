@@ -13,7 +13,7 @@ const Register = () => {
     const [validatePassword, setValidatePassword] = useState('')
     const [error, setError] = useState(null)
     const {currentUser} = useSelector((state) => state.users)
-    const {admin, setAdmin} = useSelector((state) => state.users)
+    const [admin, setAdmin] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const handleRegisterBtn = () => {
