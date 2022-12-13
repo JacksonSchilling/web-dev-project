@@ -1,10 +1,6 @@
 import axios from "axios";
 const BASE_URL = 'http://localhost:4000/api'
 
-export const createUser = async () => {
-
-}
-
 export const findAllUsers = async () => {
     const response = await axios.get('http://localhost:4000/api/users')
     return response.data
@@ -30,5 +26,11 @@ export const logout = async () => {
     return response.data
 }
 
-export const deleteUser = async (uid) => {}
-export const updateUser = async (uid, userUpdates) => {}
+export const deleteUser = async (uid) => {
+    const response = await axios.delete(`${BASE_URL}/users/${uid}`)
+    return response.data
+}
+export const updateUser = async (uid, userUpdates) => {
+    const response = await axios.put(`${BASE_URL}/users/${uid}`, userUpdates)
+    return response.data
+}
