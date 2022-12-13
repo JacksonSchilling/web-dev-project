@@ -6,7 +6,7 @@ import "./usermanagement.css"
 
 const UserManagement = () => {
     const {users} = useSelector((state) => state.users)
-    const {currentUser} = useSelector((state) => state.users)
+    const {currentUser} = useSelector((state) => state.currentUser)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(findAllUsersThunk())
