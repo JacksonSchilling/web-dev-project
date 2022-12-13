@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as util from "util";
 
 const SONGS_API = 'http://localhost:4000/api/like'
 
@@ -16,12 +17,26 @@ export const dislikeSong = async (user,track) => {
     //const uri = track.uri
     //const finId = uri.substring(14)
     const track1 = track._id
-    console.log("This is the track id thats being tested " + track1)
-    const finId = '4RYTi6AJnzLu6qYtkjZGvZ'
+
+    const stringifyAttempt = JSON.stringify(track);
+
+    console.log("The stringifyAttempt is " + JSON.stringify(track))
+
+    console.log("The insepction is as follows ")
+    console.log(util.inspect(track, false, null));
+
+
+    console.log("Track._id attempt is " + track1)
+
+    console.log("track attempt is " + track)
+
     console.log("THE FINAL USER ID BEING SENT IS " + uid)
-    console.log("THE FINAL FINAL ID BEING SENT IS " + finId)
-    const response = await axios.delete(`${SONGS_API}/${uid}/${finId}`)
+    console.log("THE FINAL FINAL ID BEING SENT IS " + track)
+
+    const response = await axios.delete(`${SONGS_API}/${uid}/${track}`)
+    //location.reload()
     return response.data
+
 }
 export const likeSong = async (track) => {
     const response = await axios.post(SONGS_API, track)

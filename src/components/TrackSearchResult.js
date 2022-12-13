@@ -13,6 +13,8 @@ export default function TrackSearchResult({track, chooseTrack, likeSong, dislike
 
     const [trackLike, setTrackLike] = useState(false)
 
+    const [iconColor, setIconColor] = useState("blank")
+
     function handlePlay() {
         chooseTrack(track)
     }
@@ -24,11 +26,13 @@ export default function TrackSearchResult({track, chooseTrack, likeSong, dislike
         // console.log(trackLike)
         if (track.liked === false) {
             likeSong(track)
+            setIconColor("white")
         } else {
             // console.log("Disliking the song with track info: ")
             console.log("Dislike the song now")
             // console.log(track)
             dislikeSong(track)
+            setIconColor("blank")
         }
     }
 
@@ -55,6 +59,7 @@ export default function TrackSearchResult({track, chooseTrack, likeSong, dislike
                 </div>
             </div>
             <div className="col">
+
                 {
                     !trackLike &&
                     <i className="bi bi-heart" onClick={handleLike}></i>

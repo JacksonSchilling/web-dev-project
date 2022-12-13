@@ -31,19 +31,26 @@ const likedSongSlice = createSlice({
                                                    state.loading = false
                                                    state.songs = payload
                                                },
-                                           //     [dislikeSongThunk.fulfilled]:
-                                           //         (state, { payload }) => {
-                                           //             state.loading = false
-                                           //             state.songs = state.songs.filter(t => t.trackId !== payload)
-                                           //         }
-                                           // },
-                                           // reducers: {
-                                           //     dislikeSong(state, action) {
-                                           //         const index = state.findIndex(song => song.trackId === action.payload);
-                                           //         state.splice(index, 1);
-                                           //     }
-                                           // }
-                                       }
+                                               [dislikeSongThunk.fulfilled]:
+                                                   (state, { payload }) => {
+                                                       state.loading = false
+                                                       state.songs = state.songs.filter(t => t.trackId !== payload)
+
+                                                       const js = JSON.stringify(state.songs)
+                                                       console.log("The state.songs is equal to " + js)
+
+                                                       const output = JSON.stringify(payload)
+                                                       console.log("Payload is equal to " + output)
+
+                                                   }
+                                           },
+                                           reducers: {
+                                               dislikeSong(state, action) {
+                                                   const index = state.findIndex(song => song.trackId === action.payload);
+                                                   console.log("The index is " + index)
+                                                   state.splice(index, 1);
+                                               }
+                                           }
                                    });
-//export const {dislikeSong} = likedSongSlice.actions;
+export const {dislikeSong} = likedSongSlice.actions;
 export default likedSongSlice.reducer

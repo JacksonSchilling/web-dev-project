@@ -1,11 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from "react";
-import {getLikedSongsThunk} from "../../services/songs-thunk";
+import {dislikeSongThunk, getLikedSongsThunk} from "../../services/songs-thunk";
 import TrackSearchResult from "../TrackSearchResult";
 import {spotifyApi} from "../Dashboard";
 import {useNavigate} from "react-router";
 import axios from "axios";
-import {likeSong} from "../../services/liked-song-service";
+import {dislikeSong, likeSong} from "../../services/liked-song-service";
+import TrackLikedSong from "../TrackLikedSong";
 
 const LikedSong = () => {
     const {songs, loading} = useSelector(
@@ -23,6 +24,33 @@ const LikedSong = () => {
     useEffect(() => {
         dispatch(getLikedSongsThunk(currentUser))
     }, [])
+
+    const dislikeSongCall = (track) => {
+        const uri = track.uri
+        const id = uri.substring(14)
+        spotifyApi.getTrack(id)
+            .then(function (data) {
+                console.log(currentUser);
+                const dislikeSongDetails = {
+                    ...data.body,
+                    user: currentUser
+                }
+                console.log('Track information for dislike method', data.body);
+                //console.log("We are doing the initial sending the id of ", id);
+                const data1 =[currentUser, id]
+                const{user2,id2} = data1;
+                console.log('The sent user is ', user2);
+                console.log("The sent id is ", id2);
+
+
+
+
+                dispatch(dislikeSongThunk(data1))
+            }, function (err) {
+                console.error(err);
+            });
+
+    }
 
     const viewDetailsOfTrack = (track) => {
         const albumId = track.albumId
@@ -146,11 +174,12 @@ const LikedSong = () => {
 
                         </div>
                     )) : songs.map(track => (
-                        <TrackSearchResult
+                        <TrackLikedSong
                             track={track}
                             key={track.uri}
                             chooseTrack={null}
                             likeSong={likeSong}
+                            dislikeSong={dislikeSongCall}
                             chooseTrack={viewDetailsOfTrack}
                         />
 
