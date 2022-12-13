@@ -1,11 +1,14 @@
 import React, {useState} from "react"
+import "./TrackSearchResult.css"
 
 
-export default function TrackSearchResult({track, chooseTrack, likeSong}) {
+
+export default function TrackSearchResult({track, chooseTrack, likeSong, dislikeSong}) {
 
     track = {
         ...track,
         liked: false
+
     }
 
     const [trackLike, setTrackLike] = useState(false)
@@ -15,10 +18,24 @@ export default function TrackSearchResult({track, chooseTrack, likeSong}) {
     }
 
     const handleLike = () => {
+
         setTrackLike(!trackLike)
         track.liked = trackLike
         // console.log(trackLike)
-        likeSong(track)
+        if (track.liked === false) {
+            likeSong(track)
+        } else {
+            // console.log("Disliking the song with track info: ")
+            console.log("Dislike the song now")
+            // console.log(track)
+            dislikeSong(track)
+        }
+    }
+
+    const getLike = () => {
+        console.log("The liked status for track ")
+        console.log(track)
+        console.log(track.liked)
     }
 
     return (
@@ -32,7 +49,7 @@ export default function TrackSearchResult({track, chooseTrack, likeSong}) {
                     <img src={track.albumUrl}
                          style={{height: "64px", width: "64px"}}/>
                     <div className="ml-3">
-                        <div>{track.title}</div>
+                        <div className="white-text">{track.title}</div>
                         <div className="text-muted">{track.artist}</div>
                     </div>
                 </div>
