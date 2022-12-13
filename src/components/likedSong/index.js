@@ -93,7 +93,7 @@ const LikedSong = () => {
     const handleCloseDetails = () => {
         setAlbum([])
         setClicked(false)
-        navigate('/api/liked-song')
+        navigate('/api/home')
         // window.location.reload()
     }
 
@@ -199,7 +199,7 @@ const LikedSong = () => {
             <div className="mt-3 float-left move-left">
                 <h3>Popular songs</h3>
                 <div>
-                    <img width={170} alt={''} src="../images/sos-album.jpeg"/>
+                    <img width={170} alt={''} src="../images/sos-album.png"/>
                 </div>
 
                 <div className="text-white fw-bold mt-2">
@@ -213,7 +213,7 @@ const LikedSong = () => {
 
             <div className="mt-5 float-left position-relative ms-5 move-album-down">
                 <div>
-                    <img width={170} alt={''} src="../images/midnights-album.jpg"/>
+                    <img width={170} alt={''} src="../images/midnights-album.png"/>
                 </div>
 
                 <div className="text-white fw-bold mt-2">
@@ -248,19 +248,6 @@ const LikedSong = () => {
 
                 <div className="fg-grey mt-2">
                     Beyoncé
-                </div>
-            </div>
-            <div className="float-end position-relative ms-5 mt-4 move-album-up move-album-right">
-                <div>
-                    <img width={170} alt={''} src="../images/creepin-album.jpg"/>
-                </div>
-
-                <div className="text-white fw-bold mt-2">
-                    Creepin'
-                </div>
-
-                <div className="fg-grey mt-2">
-                    Metro Boomin
                 </div>
             </div>
         </div>

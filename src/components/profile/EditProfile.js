@@ -1,9 +1,27 @@
 import "./form-validation.css"
 import "./form-validation.js";
 import {useNavigate} from "react-router";
+import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {updateUserThunk} from "../login/users-thunks";
 
 const EditProfile = () => {
     const navigate = useNavigate()
+    const [username, setUsername] = useState('')
+    const [fullName, setFullName] = useState('')
+    const [email, setEmail] = useState('')
+    const {currentUser} = useSelector((state) => state.users)
+    const dispatch = useDispatch()
+
+    const handleUpdateUser = () => {
+        const userUpdateArr = []
+        const userUpdates = {username, fullName, email}
+        userUpdateArr.push(currentUser._id)
+        userUpdateArr.push(userUpdates)
+        dispatch(updateUserThunk(userUpdateArr))
+    }
+
+
     return (
         <div className="container">
             <div className="row g-5">
@@ -15,7 +33,7 @@ const EditProfile = () => {
                         <div className="col end-0">
                             <button type="button" className="btn-close end-0"
                                     aria-label="Close"
-                                    onClick={() => navigate('/profile')}
+                                    onClick={() => navigate('/api/profile')}
                             >
                             </button>
                         </div>
@@ -26,25 +44,16 @@ const EditProfile = () => {
                         <div className="row g-3">
                             <div className="col-sm-6">
                                 <label htmlFor="firstName"
-                                       className="form-label">First name</label>
+                                       className="form-label">Full name</label>
                                 <input type="text" className="form-control"
-                                       id="firstName" placeholder="" value=""
-                                       required/>
+                                       id="firstName" placeholder=""
+                                       required
+                                onChange={(e) => setFullName(e.target.value) }/>
                                 <div className="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
 
-                            <div className="col-sm-6">
-                                <label htmlFor="lastName"
-                                       className="form-label">Last name</label>
-                                <input type="text" className="form-control"
-                                       id="lastName" placeholder="" value=""
-                                       required/>
-                                <div className="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
-                            </div>
 
                             <div className="col-12">
                                 <label htmlFor="username"
@@ -53,7 +62,8 @@ const EditProfile = () => {
                                     <span className="input-group-text">@</span>
                                     <input type="text" className="form-control"
                                            id="username" placeholder="Username"
-                                           required/>
+                                           required
+                                           onChange={(e) => setUsername(e.target.value) }/>
                                     <div className="invalid-feedback">
                                         Your username is required.
                                     </div>
@@ -66,32 +76,33 @@ const EditProfile = () => {
                                 <input type="email" className="form-control"
                                        id="email"
                                        placeholder="you@example.com"
-                                       required/>
+                                       required
+                                       onChange={(e) => setEmail(e.target.value) }/>
                                 <div className="invalid-feedback">
                                     Please enter a valid email address
                                 </div>
                             </div>
 
-                            <div className="col-12">
-                                <label htmlFor="address"
-                                       className="form-label">Address</label>
-                                <input type="text" className="form-control"
-                                       id="address"
-                                       placeholder="1234 XYZ Street"
-                                       required/>
-                                <div className="invalid-feedback">
-                                    Please enter your shipping address.
-                                </div>
-                            </div>
+                            {/*<div className="col-12">*/}
+                            {/*    <label htmlFor="address"*/}
+                            {/*           className="form-label">Address</label>*/}
+                            {/*    <input type="text" className="form-control"*/}
+                            {/*           id="address"*/}
+                            {/*           placeholder="1234 XYZ Street"*/}
+                            {/*           required/>*/}
+                            {/*    <div className="invalid-feedback">*/}
+                            {/*        Please enter your shipping address.*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
 
-                            <div className="col-12">
-                                <label htmlFor="address2"
-                                       className="form-label">Address 2 <span
-                                    className="text-muted">(Optional)</span></label>
-                                <input type="text" className="form-control"
-                                       id="address2"
-                                       placeholder="Apartment or suite"/>
-                            </div>
+                            {/*<div className="col-12">*/}
+                            {/*    <label htmlFor="address2"*/}
+                            {/*           className="form-label">Address 2 <span*/}
+                            {/*        className="text-muted">(Optional)</span></label>*/}
+                            {/*    <input type="text" className="form-control"*/}
+                            {/*           id="address2"*/}
+                            {/*           placeholder="Apartment or suite"/>*/}
+                            {/*</div>*/}
                         </div>
 
                         <hr className="my-4"/>
@@ -99,6 +110,7 @@ const EditProfile = () => {
                         <button
                             className="w-100 btn btn-primary btn-lg"
                             type="submit"
+                            oncClick={handleUpdateUser}
                             >
                             Save Profile
                         </button>

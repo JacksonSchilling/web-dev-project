@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import Profile from "./components/profile";
 import EditProfile from "./components/profile/EditProfile";
 import Login from "./components/login";
-import Home from "./components/home";
+
 import Dashboard from "./components/Dashboard";
 import searchSongReducer from "./redux/search-song-reducer";
 import Register from "./components/login/register";
