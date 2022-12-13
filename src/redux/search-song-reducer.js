@@ -36,12 +36,6 @@ const likedSongSlice = createSlice({
                                                        state.loading = false
                                                        state.songs = state.songs.filter(t => t.trackId !== payload)
 
-                                                       const js = JSON.stringify(state.songs)
-                                                       console.log("The state.songs is equal to " + js)
-
-                                                       const output = JSON.stringify(payload)
-                                                       console.log("Payload is equal to " + output)
-
                                                    }
                                            },
                                            reducers: {
