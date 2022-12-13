@@ -33,6 +33,17 @@
 }
 
 .move-album-up{
-    bottom: 20px;
+    bottom: 250px;
 }
 
+.move-left{
+    margin-left: -100px;
+}
+
+.move-album-down{
+    top: 10px;
+}
+
+.move-album-right{
+    margin-left: 20px;
+}
