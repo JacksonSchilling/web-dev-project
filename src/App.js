@@ -13,11 +13,14 @@ import "./App.css";
 import LikedSong from "./components/likedSong";
 import usersReducer from "./components/login/users-reducer";
 import CurrentUser from "./components/login/current-user";
+import followsReducer from "./components/follows/follows-reducer";
+import UsersList from "./components/UserManagement/usersList";
 
 const store = configureStore({
                                  reducer: {
                                      likedSong: searchSongReducer,
-                                     users: usersReducer
+                                     users: usersReducer,
+                                     follows: followsReducer
                                  }
                              })
 
@@ -35,6 +38,7 @@ function App() {
                             <Link to="/api/user-management">User
                                 Management </Link>
                             <Link to="/api/liked-song">Liked Page</Link>
+                            <Link to="/api/browse-users">Browse Users</Link>
                         </div>
                         <div className="main_body player player_body">
                             <div className="container">
@@ -56,6 +60,8 @@ function App() {
                                            element={<UserManagement/>}/>
                                     <Route path="/api/liked-song"
                                            element={<LikedSong/>}/>
+                                    <Route path="/api/browse-users"
+                                           element={<UsersList/>}/>
                                 </Routes>
                             </div>
                         </div>
