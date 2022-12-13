@@ -99,7 +99,7 @@ const EditProfile = () => {
                         <button
                             className="w-100 btn btn-primary btn-lg"
                             type="submit"
-                        >
+                            >
                             Save Profile
                         </button>
                     </form>

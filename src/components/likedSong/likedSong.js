@@ -1,5 +1,14 @@
+import {useEffect} from "react";
+import {getLikedSongsThunk} from "../../services/songs-thunk";
+import {useSelector} from "react-redux";
+
 const likedSongPage = () => {
 
+    const {currentUser} = useSelector((state) => state.users)
+
+    useEffect(() => {
+        dispatch(getLikedSongsThunk(currentUser))
+    }, [])
     return (
         <div className="row">
             <div className="col-md-4 px-0">
@@ -11,7 +20,10 @@ const likedSongPage = () => {
                 <h2>Liked Songs</h2>
                 <p>Collection of Liked Songs</p>
             </div>
+
+
         </div>
+
 
     )
 }

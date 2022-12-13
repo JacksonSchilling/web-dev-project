@@ -1,9 +1,11 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import "./TrackSearchResult.css"
+import {getLikedSongsThunk} from "../services/songs-thunk";
+import {useDispatch, useSelector} from "react-redux";
 
 
 
-export default function TrackSearchResult({track, chooseTrack, likeSong, dislikeSong}) {
+export default function TrackLikedSong({track, chooseTrack, likeSong, dislikeSong}) {
 
     track = {
         ...track,
@@ -12,8 +14,11 @@ export default function TrackSearchResult({track, chooseTrack, likeSong, dislike
     }
 
     const [trackLike, setTrackLike] = useState(false)
-
-    const [iconColor, setIconColor] = useState("blank")
+    const {currentUser} = useSelector((state) => state.users)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getLikedSongsThunk(currentUser))
+    }, [])
 
     function handlePlay() {
         chooseTrack(track)
@@ -21,19 +26,12 @@ export default function TrackSearchResult({track, chooseTrack, likeSong, dislike
 
     const handleLike = () => {
 
-        setTrackLike(!trackLike)
+        setTrackLike(false)
         track.liked = trackLike
-        // console.log(trackLike)
-        if (track.liked === false) {
-            likeSong(track)
-            setIconColor("white")
-        } else {
-            // console.log("Disliking the song with track info: ")
-            console.log("Dislike the song now")
-            // console.log(track)
-            dislikeSong(track)
-            setIconColor("blank")
-        }
+        dislikeSong(track)
+
+        //window.location.reload(false)
+
     }
 
     const getLike = () => {
@@ -59,15 +57,7 @@ export default function TrackSearchResult({track, chooseTrack, likeSong, dislike
                 </div>
             </div>
             <div className="col">
-
-                {
-                    !trackLike &&
-                    <i className="bi bi-heart" onClick={handleLike}></i>
-                }
-                {
-                    trackLike &&
-                    <i className="bi bi-heart-fill" onClick={handleLike}></i>
-                }
+                <i className="bi bi-heart-fill" onClick={handleLike}></i>
             </div>
         </div>
 

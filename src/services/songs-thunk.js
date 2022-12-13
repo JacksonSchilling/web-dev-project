@@ -1,5 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 import * as service from './liked-song-service'
+import {deleteUser} from "../components/login/users-service";
 
 export const getLikedSongsThunk = createAsyncThunk(
     'songs/getLiked',
@@ -17,13 +18,10 @@ export const likeSongThunk = createAsyncThunk(
     });
 
 export const dislikeSongThunk = createAsyncThunk(
-    'songs/dislikeSong',
-    async (user,id) => {
-        console.log("reached thunk level - dislike Song")
-
-        console.log("The id that thunk recieved is " + id)
-
-        console.log("The user that thunk recieved is " + user)
+    'songs/dislike',
+    async (data) => {
+        const user = data[0]
+        const id = data[1]
         const serverTuit = await service.dislikeSong(user,id)
         return serverTuit
     });

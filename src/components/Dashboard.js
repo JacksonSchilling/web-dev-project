@@ -5,16 +5,17 @@ import TrackSearchResult from "./TrackSearchResult"
 import {Container, Form} from "react-bootstrap"
 import SpotifyWebApi from "spotify-web-api-node"
 import axios from "axios"
-import {useDispatch} from "react-redux";
-import {likeSongThunk} from "../services/songs-thunk";
+import {useDispatch, useSelector} from "react-redux";
+import {dislikeSongThunk, likeSongThunk} from "../services/songs-thunk";
 
 
 export const spotifyApi = new SpotifyWebApi({
-    clientId: "bb235ac85acd4799bac266127f244d7f",
-})
+                                         clientId: "bb235ac85acd4799bac266127f244d7f",
+                                     })
 
-export default function Dashboard({code}) {
-    const accessToken = useAuth(code)
+export default function Dashboard() {
+    const accessToken = useAuth()
+    const {currentUser} = useSelector((state) => state.users)
     const [search, setSearch] = useState("")
     const [searchResults, setSearchResults] = useState([])
     const [playingTrack, setPlayingTrack] = useState()
@@ -34,11 +35,34 @@ export default function Dashboard({code}) {
         const id = uri.substring(14)
         spotifyApi.getTrack(id)
             .then(function (data) {
-                console.log('Track information', data.body);
-                dispatch(likeSongThunk(data.body))
+                console.log(currentUser);
+                const likeSongDetails = {
+                    ...data.body,
+                    user: currentUser
+                }
+                dispatch(likeSongThunk(likeSongDetails))
             }, function (err) {
                 console.error(err);
             });
+    }
+
+    const dislikeSongCall = (track) => {
+        const uri = track.uri
+        const id = uri.substring(14)
+        spotifyApi.getTrack(id)
+            .then(function (data) {
+                console.log(currentUser);
+                const dislikeSongDetails = {
+                    ...data.body,
+                    user: currentUser
+                }
+                console.log('Track information for dislike method', data.body);
+                //console.log("We are sending the track of ", );
+                dispatch(dislikeSongThunk(currentUser, id))
+            }, function (err) {
+                console.error(err);
+            });
+
     }
 
 
@@ -121,6 +145,7 @@ export default function Dashboard({code}) {
                         key={track.uri}
                         chooseTrack={chooseTrack}
                         likeSong={likeSong}
+                        dislikeSong={dislikeSongCall}
                     />
                 ))}
                 {searchResults.length === 0 && (
