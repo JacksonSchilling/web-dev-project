@@ -1,42 +1,48 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {deleteUserThunk, findAllUsersThunk, registerThunk} from "../login/users-thunks";
+import {useDispatch, useSelector} from "react-redux";
+import currentUser from "../login/current-user";
+import "./usermanagement.css"
 
 const UserManagement = () => {
-    return (
-        <div className="container">
-            <div className="row">
-                <h1>User Management</h1>
-            </div>
-            <div className="row border">
-                <div className="col 1">
-                    <h4>User 1</h4>
-                </div>
-                <div className="col me-5 pt-1">
-                    <button className="w-10 btn btn-sm btn-danger"
-                            type="submit">Delete
-                    </button>
-                </div>
-            </div>
-            <div className="row border">
-                <div className="col 1">
-                    <h4>User 2</h4>
-                </div>
-                <div className="col me-5 pt-1">
-                    <button className="w-10 btn btn-sm btn-danger"
-                            type="submit">Delete
-                    </button>
-                </div>
-            </div>
-            <div className="row border">
-                <div className="col 1">
-                    <h4>User 3</h4>
-                </div>
-                <div className="col me-5 pt-1">
-                    <button className="w-10 btn btn-sm btn-danger"
-                            type="submit">Delete
-                    </button>
-                </div>
-            </div>
-        </div>
-    )
+    const {users} = useSelector((state) => state.users)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(findAllUsersThunk())
+    }, [])
+    const {currentUser} = useSelector((state) => state.users)
+
+    console.log(currentUser.fullName)
+    if (currentUser.admin !== null && currentUser.admin === true) {
+        return(
+            <>
+                {
+                    <h2>User Management</h2>
+                }
+                <ul className="list-group">
+                    {
+                        users.map((user) =>
+                            <li className="list-group-item"
+                                key={user._id}>
+                                <i onClick={() => {
+                                    dispatch(deleteUserThunk(user._id))
+                                }}
+                                   className="bi bi-trash float-end"></i>
+                                <span>{user.username} </span>
+                            </li>
+                        )
+                    }
+                </ul>
+            </>
+        )
+    } else {
+        return(
+            <>
+                <h2>Not Authorized</h2>
+            </>
+        )
+    }
+
+
 }
 export default UserManagement

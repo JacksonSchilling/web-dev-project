@@ -1,0 +1,36 @@
+import axios from "axios";
+const BASE_URL = 'http://localhost:4000/api'
+
+export const findAllUsers = async () => {
+    const response = await axios.get('http://localhost:4000/api/users')
+    return response.data
+}
+
+export const register = async (user) => {
+    const response = await axios.post(`${BASE_URL}/register`, user)
+    return response.data
+}
+
+export const login = async (user) => {
+    const response = await axios.post(`${BASE_URL}/login`, user)
+    return response.data
+}
+
+export const profile = async (currentUser) => {
+    const response = await axios.post(`${BASE_URL}/profile`, currentUser)
+    return response.data
+}
+
+export const logout = async () => {
+    const response = await axios.post(`${BASE_URL}/logout`)
+    return response.data
+}
+
+export const deleteUser = async (uid) => {
+    const response = await axios.delete(`${BASE_URL}/users/${uid}`)
+    return response.data
+}
+export const updateUser = async (uid, userUpdates) => {
+    const response = await axios.put(`${BASE_URL}/users/${uid}`, userUpdates)
+    return response.data
+}

@@ -1,157 +1,85 @@
 import React from "react";
 import './home.css';
+import userList from "./user-list";
 
 const Home = () => {
     return (
+        <>
         <div>
-            <div>
-            <h3>Liked Albums</h3>
-            <button className="btn btn-primary override-bs rounded-pill float-end">
-                <b>User1</b>
-            </button>
+            <h3>Popular songs</h3>
                 <div className="mt-3 float-left">
                     <div>
-                        <img width={170} alt={''} src="../images/origins-cover.png"/>
+                        <img width={170} alt={''} src="../images/sos-album.jpeg"/>
                     </div>
 
                     <div className="text-white fw-bold mt-2">
-                        Zero- From the Orig...
+                        Nobody Gets Me
                     </div>
 
                     <div className="fg-grey mt-2">
-                        Imagine Dragons
+                        SZA
                     </div>
                 </div>
 
             <div className="mt-3 float-left position-relative ms-5">
                 <div>
-                    <img width={170} alt={''} src="../images/origins-cover.png"/>
+                    <img width={170} alt={''} src="../images/midnights-album.jpg"/>
                 </div>
 
                 <div className="text-white fw-bold mt-2">
-                    Zero- From the Orig...
+                    Anti-Hero
                 </div>
 
                 <div className="fg-grey mt-2">
-                    Imagine Dragons
+                    Taylor Swift
                 </div>
             </div>
             <div className="mt-3 float-left position-relative ms-5">
                 <div>
-                    <img width={170} alt={''} src="../images/origins-cover.png"/>
+                    <img width={170} alt={''} src="../images/unholy-album.png"/>
                 </div>
 
                 <div className="text-white fw-bold mt-2">
-                    Zero- From the Orig...
+                    Unholy (feat. Kim Petras)
                 </div>
 
                 <div className="fg-grey mt-2">
-                    Imagine Dragons
+                    Sam Smith, Kim Petras
                 </div>
             </div>
             <div className="mt-3 float-left position-relative ms-5">
                 <div>
-                    <img width={170} alt={''} src="../images/origins-cover.png"/>
+                    <img width={170} alt={''} src="../images/cuff-it-album.png"/>
                 </div>
 
                 <div className="text-white fw-bold mt-2">
-                    Zero- From the Orig...
+                    CUFF IT
                 </div>
 
                 <div className="fg-grey mt-2">
-                    Imagine Dragons
+                    Beyoncé
                 </div>
             </div>
-            <div className="float-left position-relative move-album-up ms-5">
+            <div className="float-left position-relative ms-5 mt-3">
                 <div>
-                    <img width={170} alt={''} src="../images/origins-cover.png"/>
+                    <img width={170} alt={''} src="../images/creepin-album.jpg"/>
                 </div>
 
                 <div className="text-white fw-bold mt-2">
-                    Zero- From the Orig...
+                    Creepin'
                 </div>
 
                 <div className="fg-grey mt-2">
-                    Imagine Dragons
+                    Metro Boomin
                 </div>
             </div>
-            </div>
-            <div className='float-start position-relative'>
+                <div className='float-start position-relative mt-3'>
 
-            <h3>Suggested Songs</h3>
-
-            <div className="mt-3 float-left">
-                <div>
-                    <img width={170} alt={''} src="../images/origins-cover.png"/>
+                    <h3>System Users</h3>
                 </div>
-
-                <div className="text-white fw-bold mt-2">
-                    Zero- From the Orig...
-                </div>
-
-                <div className="fg-grey mt-2">
-                    Imagine Dragons
-                </div>
-            </div>
-
-                <div className="mt-3 ms-5 float-left">
-                    <div>
-                        <img width={170} alt={''} src="../images/origins-cover.png"/>
-                    </div>
-
-                    <div className="text-white fw-bold mt-2">
-                        Zero- From the Orig...
-                    </div>
-
-                    <div className="fg-grey mt-2">
-                        Imagine Dragons
-                    </div>
-                </div>
-
-                <div className="mt-3 ms-5 float-left">
-                    <div>
-                        <img width={170} alt={''} src="../images/origins-cover.png"/>
-                    </div>
-
-                    <div className="text-white fw-bold mt-2">
-                        Zero- From the Orig...
-                    </div>
-
-                    <div className="fg-grey mt-2">
-                        Imagine Dragons
-                    </div>
-                </div>
-
-                <div className="mt-3 ms-5 float-left">
-                    <div>
-                        <img width={170} alt={''} src="../images/origins-cover.png"/>
-                    </div>
-
-                    <div className="text-white fw-bold mt-2">
-                        Zero- From the Orig...
-                    </div>
-
-                    <div className="fg-grey mt-2">
-                        Imagine Dragons
-                    </div>
-                </div>
-
-                <div className="mt-3 ms-5 float-left">
-                    <div>
-                        <img width={170} alt={''} src="../images/origins-cover.png"/>
-                    </div>
-
-                    <div className="text-white fw-bold mt-2">
-                        Zero- From the Orig...
-                    </div>
-
-                    <div className="fg-grey mt-2">
-                        Imagine Dragons
-                    </div>
-                </div>
-            </div>
-
-            </div>
+        </div>
+            <userList/>
+        </>
     )
 };
 

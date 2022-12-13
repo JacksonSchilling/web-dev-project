@@ -1,48 +1,126 @@
-import React from "react";
+import React, {useState} from "react";
 import "./login.css"
 import {useNavigate} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {registerThunk} from "./users-thunks";
 
 const Register = () => {
-    const navigate = useNavigate()
-    return (
-        <div className="form-signin w-100 m-auto">
-            <button type="button"
-                    className="btn btn-sm btn-outline-secondary mt-2 me-5 float-end rounded-pill"
-                    onClick={() => navigate('/login')}
-            >
-                Already have an account? Log-In
+    const [username, setUsername] = useState('')
+    const [fullName, setFullName] = useState('')
+    const [email, setEmail] = useState('')
+    const [dob, setDob] = useState('')
+    const [password, setPassword] = useState('')
+    const [validatePassword, setValidatePassword] = useState('')
+    const [error, setError] = useState(null)
+    const {currentUser} = useSelector((state) => state.users)
+    const [admin, setAdmin] = useState(false)
+    const dispatch = useDispatch()
+    const handleRegisterBtn = () => {
+        if (password !== validatePassword) {
+            setError('Passwords must match')
+            return
+        }
+        setError(null)
+        const newUser = {fullName, username, password, email, dob, admin}
+        dispatch(registerThunk(newUser))
+    }
+    return(
+        <>
+            <h1>Register</h1>
+            {
+                error &&
+                <div className="alert alert-danger">
+                    {error}
+                </div>
+            }
+
+            <label htmlFor="name"
+                   className="form-label">Full Name</label>
+            <div className="input-group has-validation">
+                <span className="input-group-text">@</span>
+                <input type="text" className="form-control"
+                       id="name" placeholder="Full Name"
+                       onChange={(e) => setFullName(e.target.value)}
+                       required/>
+                <div className="invalid-feedback">
+                    Your Full Name is required.
+                </div>
+            </div>
+
+            <label htmlFor="username"
+                   className="form-label">Username</label>
+            <div className="input-group has-validation">
+                <span className="input-group-text">@</span>
+                <input type="text" className="form-control"
+                       id="username" placeholder="Username"
+                       onChange={(e) => setUsername(e.target.value)}
+                       required/>
+                <div className="invalid-feedback">
+                    Your username is required.
+                </div>
+            </div>
+
+            <label htmlFor="email"
+                   className="form-label">Email</label>
+            <input type="email" className="form-control mb-3"
+                   id="email"
+                   placeholder="you@example.com"
+                   onChange={(e) => setEmail(e.target.value)}
+                   required/>
+            <div className="invalid-feedback">
+                Please enter a valid email address
+            </div>
+
+            <label htmlFor="dob"
+                   className="form-label">Date of Birth</label>
+            <input type="date" className="form-control mb-3"
+                   id="dob"
+                   onChange={(e) => setDob(e.target.value)}
+                   required/>
+            <div className="invalid-feedback">
+                Please enter a valid Date of Birth
+            </div>
+
+            <label htmlFor="password"
+                   className="form-label">Password</label>
+            <input
+                className="form-control mb-2"
+                id="password"
+                value={password}
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}/>
+
+            <label htmlFor="confirm-password"
+                   className="form-label">Confirm Password</label>
+            <input
+                className="form-control mb-2"
+                value={validatePassword}
+                type="password"
+                id="confirm-password"
+                onChange={(e) => setValidatePassword(e.target.value)}/>
+
+            <div className="form-check">
+                <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onChange={(e) => setAdmin(e.target.checked)}/>
+                <label className="form-check-label" form="flexCheckDefault">
+                    Admin Account?
+                </label>
+            </div>
+
+            <button
+                onClick={handleRegisterBtn}
+                className="btn btn-primary w-100 mt-3">
+                Register
             </button>
-            <form>
-                <h1 className="h3 mb-3 fw-normal">Register for an account</h1>
-
-                <div className="form-floating">
-                    <input type="email" className="form-control"
-                           id="floatingInput"
-                           placeholder="name@example.com"/>
-                    <label htmlFor="floatingInput">Email address</label>
-                </div>
-                <div className="form-floating">
-                    <input type="password" className="form-control"
-                           id="floatingPassword" placeholder="Password"/>
-                    <label htmlFor="floatingPassword">Password</label>
-                </div>
-
-                <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked"/>
-                    <label className="form-check-label" htmlFor="flexCheckChecked">
-                        Admin Account
-                    </label>
-                </div>
-
-                <button className="w-100 btn btn-lg btn-primary"
-                        type="submit">Register
-                </button>
-                <p className="mt-5 mb-3 text-muted position-absolute top-25
-                start-50 translate-middle">&copy; 2017–2022</p>
-            </form>
-
-
-        </div>
+            {
+                currentUser &&
+                <h2>Welcome {currentUser.username}</h2>
+            }
+        </>
     )
 }
 
