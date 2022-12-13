@@ -1,6 +1,7 @@
 import React from "react";
 import './home.css';
 import userList from "./user-list";
+import userItem from "./user-item";
 
 const Home = () => {
     return (
@@ -77,8 +78,8 @@ const Home = () => {
 
                     <h3>System Users</h3>
                 </div>
+            <userItem/>
         </div>
-            <userList/>
         </>
     )
 };

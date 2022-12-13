@@ -7,7 +7,7 @@ import usersReducer from "../login/users-reducer";
 
 const UserList = () => {
     const {users, loading} = useSelector(
-        state => state.initialState)
+        state => state.users)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(findAllUsersThunk())
