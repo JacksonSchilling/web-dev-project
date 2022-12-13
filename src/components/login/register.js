@@ -13,8 +13,7 @@ const Register = () => {
     const [validatePassword, setValidatePassword] = useState('')
     const [error, setError] = useState(null)
     const {currentUser} = useSelector((state) => state.users)
-    const {admin, setAdmin} = useSelector((state) => state.users)
-    const navigate = useNavigate()
+    const [admin, setAdmin] = useState(false)
     const dispatch = useDispatch()
     const handleRegisterBtn = () => {
         if (password !== validatePassword) {
@@ -101,7 +100,12 @@ const Register = () => {
                 onChange={(e) => setValidatePassword(e.target.value)}/>
 
             <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={(e) => setAdmin(e.target.checked)}/>
+                <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    onChange={(e) => setAdmin(e.target.checked)}/>
                 <label className="form-check-label" form="flexCheckDefault">
                     Admin Account?
                 </label>
