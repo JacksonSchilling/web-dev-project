@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {findAllUsers} from "../login/users-service";
 import {findAllUsersThunk} from "../login/users-thunks";
 import {followUserThunk} from "../follows/follows-thunks";
@@ -32,6 +32,7 @@ const UsersList = () => {
     }
 
     return (
+        currentUser !== null ? (
         <div className="list-group">
             {
                 !clicked && (
@@ -47,9 +48,9 @@ const UsersList = () => {
                     .map((user) => {
                         return (
                             <div className="list-group-item"
-                                 onClick={() => handleViewPublicProfile(user)}>
+                                 >
                                 <div className="row">
-                                    <div className="col">
+                                    <div className="col" onClick={() => handleViewPublicProfile(user)}>
                                         {user.fullName}
                                     </div>
                                     <div className="col">
@@ -76,7 +77,11 @@ const UsersList = () => {
                         )
             }
         </div>
-    )
+    ) : <div>
+            <h3>You are not logged in</h3>
+            <button className="btn btn-success btn-lg"
+                    onClick={() => navigate('/api/login')}>Login</button>
+        </div>)
 }
 
 export default UsersList

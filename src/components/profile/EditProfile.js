@@ -1,7 +1,7 @@
 import "./form-validation.css"
 import "./form-validation.js";
 import {useNavigate} from "react-router";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {updateUserThunk} from "../login/users-thunks";
 
@@ -10,12 +10,13 @@ const EditProfile = () => {
     const [username, setUsername] = useState('')
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
 
     const handleUpdateUser = () => {
         const userUpdateArr = []
-        const userUpdates = {username, fullName, email}
+        const userUpdates = {username, fullName, email, password}
         userUpdateArr.push(currentUser._id)
         userUpdateArr.push(userUpdates)
         dispatch(updateUserThunk(userUpdateArr))
@@ -83,27 +84,15 @@ const EditProfile = () => {
                                     Please enter a valid email address
                                 </div>
                             </div>
+                            <label htmlFor="password"
+                                   className="form-label">Password</label>
+                            <input
+                                className="form-control mb-2"
+                                id="password"
+                                value={password}
+                                type="password"
+                                onChange={(e) => setPassword(e.target.value)}/>
 
-                            {/*<div className="col-12">*/}
-                            {/*    <label htmlFor="address"*/}
-                            {/*           className="form-label">Address</label>*/}
-                            {/*    <input type="text" className="form-control"*/}
-                            {/*           id="address"*/}
-                            {/*           placeholder="1234 XYZ Street"*/}
-                            {/*           required/>*/}
-                            {/*    <div className="invalid-feedback">*/}
-                            {/*        Please enter your shipping address.*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
-
-                            {/*<div className="col-12">*/}
-                            {/*    <label htmlFor="address2"*/}
-                            {/*           className="form-label">Address 2 <span*/}
-                            {/*        className="text-muted">(Optional)</span></label>*/}
-                            {/*    <input type="text" className="form-control"*/}
-                            {/*           id="address2"*/}
-                            {/*           placeholder="Apartment or suite"/>*/}
-                            {/*</div>*/}
                         </div>
 
                         <hr className="my-4"/>

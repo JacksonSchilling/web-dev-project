@@ -39,6 +39,9 @@ function App() {
                                 Management </Link>
                             <Link to="/api/home">Home</Link>
                             <Link to="/api/browse-users">Browse Users</Link>
+                            <button className="btn btn-danger btn-md w-25"
+                                    onClick={() => window.location.reload()}
+                            >Logout</button>
                         </div>
                         <div className="main_body player player_body">
                             <div className="container">

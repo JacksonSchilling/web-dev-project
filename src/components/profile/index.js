@@ -15,6 +15,7 @@ const Profile = () => {
 
     const navigate = useNavigate()
     return (
+        currentUser !== null ? (
         <div className="container">
             <div className="row">
                 <div className="col-2">
@@ -74,7 +75,12 @@ const Profile = () => {
             </div>
 
         </div>
-    )
+    ) : (<div>
+            <h3>You are not logged in</h3>
+            <button className="btn btn-success btn-lg"
+                onClick={() => navigate('/api/login')}>Login</button>
+        </div>))
+
 }
 
 export default Profile
