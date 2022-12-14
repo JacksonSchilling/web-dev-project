@@ -19,6 +19,7 @@ const EditProfile = () => {
         userUpdateArr.push(currentUser._id)
         userUpdateArr.push(userUpdates)
         dispatch(updateUserThunk(userUpdateArr))
+
     }
 
 
@@ -33,14 +34,14 @@ const EditProfile = () => {
                         <div className="col end-0">
                             <button type="button" className="btn-close end-0"
                                     aria-label="Close"
-                                    onClick={() => navigate('/api/profile')}
+                                    onClick={() => navigate('/api/login')}
                             >
                             </button>
                         </div>
                     </div>
                     {/*<h4 className="mb-3">Edit Profile</h4>*/}
 
-                    <form className="needs-validation" noValidate>
+                    <div className="needs-validation" noValidate>
                         <div className="row g-3">
                             <div className="col-sm-6">
                                 <label htmlFor="firstName"
@@ -109,12 +110,11 @@ const EditProfile = () => {
 
                         <button
                             className="w-100 btn btn-primary btn-lg"
-                            type="submit"
-                            oncClick={handleUpdateUser}
+                            onClick={handleUpdateUser}
                             >
                             Save Profile
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
 
